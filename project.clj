@@ -1,5 +1,5 @@
 (defproject logjammin "0.0.1-SNAPSHOT"
-  :description "FIXME: write description"
+  :description "SQS to logstash poller"
   :url "https://github.com/puzza007/logjammin.git"
   :uberjar-name "logjammin.jar"
   :license {:name "Eclipse Public License"
