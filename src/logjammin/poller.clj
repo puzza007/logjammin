@@ -24,33 +24,19 @@
       (log/error (format "Exception parsing event body as JSON: Exception: %s | Body: %s"
                    (str e) (str b))))))
 
-;; (defn spray-n-pray
-;;   "Sends an event to any handlers that are interested."
-;;   [config event]
-;;   (let [body (parse-body (:body event))
-;;         handlers (.event->handlers config body)]
-;;     (if (and body handlers)
-;;       (apply-handlers config event handlers)
-;;       (log-missing-handlers event))))
-
 (defrecord Poller [config client queue msgbuffer]
   component/Lifecycle
 
   (start [poller]
-    (println "Starting new Poller.")
+    (log/info "Starting new Poller.")
     (let [exit? (atom false)
           state (agent [])]
       (logging-future
         (while (not @exit?))
           (let [msgs (.receive-events client)]
             (log/debug "Handling messages: " (map :id msgs))
-            (println msgs)
-            ;; (with-histogram messages-fired-in
-            ;;   (mapv #(when (spray-n-pray config %)
-            ;;            (.delete-message client %))
-            ;;         msgs))
+            ;; TODO: Send message to (.msgbuffer poller)
             ))
-      (println "Started poller")
       (assoc poller :exit exit?)))
 
   (stop [poller]
