@@ -8,5 +8,8 @@
   :main ^:skip-aot logjammin.core
   :target-path "target/%s"
   :dependencies [[com.stuartsierra/component "0.2.2"]
+                 [clj-yaml "0.4.0"]
                  [org.clojure/clojure "1.6.0"]
-                 [sqs-comp "0.0.1"]])
+                 [org.clojure/data.json "0.2.5"]
+                 [joda-time "2.6"]
+                 [sqs-comp "0.0.2" :exclusions [joda-time]]])
