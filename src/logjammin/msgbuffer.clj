@@ -2,6 +2,7 @@
   (:require [com.stuartsierra.component :as component]
             [clojure.tools.logging :as log]))
 
+
 (defprotocol MsgAppender
   (append [msg-appender msg]
     "Find the associated handlers for an event"))
