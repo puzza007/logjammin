@@ -5,13 +5,13 @@
 
 (defprotocol MsgAppender
   (append [msg-appender msg]
-    "Find the associated handlers for an event"))
+    "Appends a message into the buffer"))
 
 (defrecord MsgBuffer [state]
   component/Lifecycle
 
   (start [msgbuffer]
-    (log/info "Starting new Poller.")
+    (log/info "Starting new MsgBuffer.")
     (let [state (agent [])]
       (assoc msgbuffer :state state)))
 
