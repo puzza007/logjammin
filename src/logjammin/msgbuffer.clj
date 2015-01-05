@@ -21,7 +21,7 @@
   (append [msgbuffer msg]
     (send state conj msg)
     (when (> 100 (count @state))
-      (send flush state))))
+      (send flush-msgs state))))
 
-(defn- flush [state]
+(defn- flush-msgs [state]
   [])
