@@ -20,6 +20,6 @@
               [:client :msgbuffer])))
 
 (defn -main []
-  (->> (->System "")
-       component/start
-       (reset! running-system)))
+  (->> (->System "/etc/logjammin.yaml")
+    component/start
+    (reset! running-system)))

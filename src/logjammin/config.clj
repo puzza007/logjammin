@@ -18,8 +18,11 @@
 
   component/Lifecycle
   (start [configuration]
-    (assoc configuration :conf {:incoming-events-queue-name "logstash-beaver"
-                                :using-iam false}))
+    (if conf
+      configuration
+      (let [config-data (read-configuration path)]
+        (log/info "Starting with configuration:" config-data)
+        (assoc configuration :conf config-data))))
 
   (stop [configuration]
     ;; Nothing to do here
