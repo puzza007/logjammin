@@ -28,12 +28,12 @@ patch-release: bump-patch tag-release
 
 package:
 	@-rm *.tar.gz
-	@mkdir -p ${TMP_DIR}/gat && \
-		cp -r resources $(shell find target -name "gat.jar") \
-			${TMP_DIR}/gat && \
-	cd ${TMP_DIR}/gat/.. && \
-	tar cvzf gat.tar.gz gat
-	@cp ${TMP_DIR}/gat.tar.gz .
+	@mkdir -p ${TMP_DIR}/logjammin && \
+		cp -r resources $(shell find target -name "logjammin.jar") \
+			${TMP_DIR}/logjammin && \
+	cd ${TMP_DIR}/logjammin/.. && \
+	tar cvzf logjammin.tar.gz logjammin
+	@cp ${TMP_DIR}/logjammin.tar.gz .
 	@rm -r ${TMP_DIR}
 
 tag-release:
@@ -45,13 +45,13 @@ tag-release:
 	(git checkout project.clj resources/VERSION && \
 	exit 1)
 
-target/uberjar/gat.jar: ${CLJ_FILES}
+target/uberjar/logjammin.jar: ${CLJ_FILES}
 	@${LEIN} uberjar
 
 test: deps
 	@${LEIN} ${TEST_ARGS}
 
-uberjar: target/uberjar/gat.jar
+uberjar: target/uberjar/logjammin.jar
 
 .PHONY: \
 	all \
