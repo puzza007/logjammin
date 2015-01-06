@@ -3,7 +3,8 @@
             [sqs-comp.client :as c]
             [logjammin.msgbuffer :as msgbuffer]
             [logjammin.config :as config]
-            [logjammin.poller :as poller]))
+            [logjammin.poller :as poller])
+  (:gen-class))
 
 
 (def running-system (atom nil))

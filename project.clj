@@ -6,6 +6,7 @@
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :pom-location "target/"
   :main ^:skip-aot logjammin.core
+  :profiles {:uberjar {:aot :all}}
   :target-path "target/%s"
   :dependencies [[com.stuartsierra/component "0.2.2"]
                  [clj-yaml "0.4.0"]
