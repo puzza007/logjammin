@@ -4,4 +4,9 @@
 
 ## Usage
 
+```shell
+make
+lein run target/uberjar/logjammin.jar
+```
+
 ## License
