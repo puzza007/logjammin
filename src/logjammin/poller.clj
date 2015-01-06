@@ -29,8 +29,7 @@
 
   (start [poller]
     (log/info "Starting new Poller.")
-    (let [exit? (atom false)
-          state (agent [])]
+    (let [exit? (atom false)]
       (logging-future
         (while (not @exit?))
           (let [msgs (.receive-events client)]
